@@ -5,12 +5,15 @@ import com.example.exam.repository.SaleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class SaleService {
     @Autowired
-    private SaleRepository productRepository;
+    SaleRepository saleRepository;
 
-    public Iterable<Sale> findAll(){
-        return productRepository.findAll();
+    public List<Sale> findAll() {
+        return saleRepository.findAll();
     }
 }
+

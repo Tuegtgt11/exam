@@ -1,6 +1,7 @@
 package com.example.exam.api;
 
-import com.example.exam.entity.Product;
+
+import java.util.List;
 import com.example.exam.entity.Sale;
 import com.example.exam.repository.SaleRepository;
 import com.example.exam.service.ProductService;
@@ -18,8 +19,9 @@ import org.springframework.web.bind.annotation.RestController;
 public class SaleApi {
     @Autowired
     SaleService saleService;
+
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<Iterable<Sale>> getList(){
-        return ResponseEntity.ok(saleService.findAll());
+    public List<Sale> findAll(){
+        return saleService.findAll();
     }
 }

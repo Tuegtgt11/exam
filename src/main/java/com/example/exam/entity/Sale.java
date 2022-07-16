@@ -1,10 +1,7 @@
 package com.example.exam.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -14,15 +11,18 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "sales")
 public class Sale {
     @Id
-    private String SlNo;
-    private String SalesmanID;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int slNo;
+    private String salesmanId;
+
     @ManyToOne
-    @JoinColumn(name = "ProdID", referencedColumnName = "ProdId")
-    private Product ProdId;
-    private String SalesmanName;
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product productId;
+    private String salesmanName;
     private String DOS;
 }
